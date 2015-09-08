@@ -15,6 +15,65 @@ var eventEmitter = new events.EventEmitter();
 var config = require('./config.json');
 var personality = require('./personality.json');
 
+// roomba
+var Roomba = require('roomba').Roomba
+var roombaReady = false;
+
+
+var bot = new Roomba({
+    sp: { path: '/dev/ttyAMA0', options: { baudrate: 57600 }}
+});
+
+bot.once('ready', function () {
+  roombaReady = true;
+  bot.send({ cmd: 'SONG', data:
+    [ 1, 6, 62, 30, 64, 30, 65, 160, 64, 50, 60, 50, 53, 120] });
+  bot.send({ cmd: 'PLAY', data: [1] });
+});
+
+
+// gpio
+var Gpio = require('onoff').Gpio;
+var buttonRed = new Gpio(6, 'in', 'both');
+var buttonGreen = new Gpio(13, 'in', 'both');
+var buttonUp = new Gpio(19, 'in', 'both');
+var buttonDown = new Gpio(26, 'in', 'both');
+
+buttonRed.watch(function(err, value) {
+  console.log('red ' + value);
+  if (value === 0) {
+    //sendEvent('buttonEvent', { 'button': 'off' });
+  }
+});
+
+buttonGreen.watch(function(err, value) {
+  console.log('green ' + value);
+  if (value === 0) {
+    console.log('go go go');
+    if (roombaReady) {
+      bot.send({ cmd: 'SONG', data:
+        [ 1, 6, 62, 30, 64, 30, 65, 160, 64, 50, 60, 50, 53, 120] });
+      bot.send({ cmd: 'PLAY', data: [1] });
+    }  
+    //sendEvent('buttonEvent', { 'button': 'on' });
+  }
+});
+
+buttonUp.watch(function(err, value) {
+  console.log('up ' + value);
+  if (value === 0) {
+    //sendEvent('buttonEvent', { 'button': 'up' });
+  }
+});
+
+buttonDown.watch(function(err, value) {
+  console.log('down ' + value);
+  if (value === 0) {
+    //sendEvent('buttonEvent', { 'button': 'down' });
+  }
+});
+
+
 
 var download = function(url, dest, cb) {
   var file = fs.createWriteStream(dest);
