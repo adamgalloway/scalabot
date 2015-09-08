@@ -97,7 +97,8 @@
     { "emotion": "pissed", "type":"speech", "value": "Slow clap" },
     { "emotion": "pissed", "type":"speech", "value": "Ooh so close" },
     { "emotion": "pissed", "type":"speech", "value": "maybe next time" },
-    { "emotion": "pissed", "type":"speech", "value": "Just try it again and again and again" }
+    { "emotion": "pissed", "type":"speech", "value": "Just try it again and again and again" },
+    { "emotion": "pissed", "type":"sound", "value": "http://movie-sounds.org/quotes/biglebo/Life-doesnt-stop-and-start-at-your-convenience.mp3" }
 
   ]
 
