@@ -21,7 +21,7 @@ var roombaReady = false;
 
 
 var bot = new Roomba({
-    sp: { path: '/dev/ttyAMA0', options: { baudrate: 57600 }}
+    sp: { path: '/dev/ttyUSB0', options: { baudrate: 115200 }}
 });
 
 bot.once('ready', function () {
