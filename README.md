@@ -4,4 +4,4 @@ You have to create a config.json file and add your uuid, secret and host values 
 
 Needs:
 
-`sudo apt-get install festival mpg321`
+`sudo apt-get install festival mpg321 libraspberrypi-bin`
