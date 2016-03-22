@@ -8,11 +8,11 @@
     "yargs": "^3.5.3"
   },
   "dependencies": {
-    "exp-js-sdk": "git+https://github.com/scalainc/exp-js-sdk.git#develop",
     "lodash": "^3.10.1",
     "node-fetch": "^1.3.1",
     "node-persist": "0.0.4",
     "onoff": "^1.0.2",
+    "raspicam": "^0.2.13",
     "roomba": "0.0.1",
     "say": "^0.6.0"
   }
